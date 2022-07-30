@@ -22,11 +22,21 @@ import React from 'react'
 // }
 class App extends React.Component {
   render() {
-    return <Button>React</Button>
+    return <Button>I <Heart /> React</Button>
   }
 }
-const Button = (props) => <Button>{props.children}</Button>
+const Button = (props) => <button>{props.children}</button>
+
+class Heart extends React.Component {
+  render() {
+    return <span>&hearts;</span>
+  }
+}
+
+
+
+
+
+
 //const Widget = (props) => <input type="text" onChange={props.update} />
-
-
 export default App
