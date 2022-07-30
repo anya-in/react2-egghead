@@ -20,23 +20,38 @@ import React from 'react'
 //     )
 //   }
 // }
+
+//Child Component extension 
+// class App extends React.Component {
+//   render() {
+//     return <Button>I <Heart /> React</Button>
+//   }
+// }
+// const Button = (props) => <button>{props.children}</button>
+
+// class Heart extends React.Component {
+//   render() {
+//     return <span>&hearts;</span>
+//   }
+// }
+//const Widget = (props) => <input type="text" onChange={props.update} />
+
 class App extends React.Component {
   render() {
-    return <Button>I <Heart /> React</Button>
-  }
-}
-const Button = (props) => <button>{props.children}</button>
-
-class Heart extends React.Component {
-  render() {
-    return <span>&hearts;</span>
+    return <Title text="The Text" />
   }
 }
 
+const Title = (props) => <h1>Title: {props.text}</h1>
+Title.propTypes = {
+  text(props, propName, component) {
+    if (!(propName in props)) {
+      return new Error(`missing ${propName}`)
+    }
+    if (props[propName].length < 6) {
+      return new Error(`${propName} was too short`)
+    }
+  }
+}
 
-
-
-
-
-//const Widget = (props) => <input type="text" onChange={props.update} />
 export default App
